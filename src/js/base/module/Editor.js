@@ -668,6 +668,15 @@ export default class Editor {
     tagName = env.isMSIE ? '<' + tagName + '>' : tagName;
     document.execCommand('FormatBlock', false, tagName);
 
+    // execCommand not support <code>
+    if (tagName === 'CODE') {
+      var elementA = window.getSelection();
+      var elementB = document.createElement(tagName);
+
+      elementB.insertAdjacentHTML('beforeend', elementA.focusNode.textContent);
+      elementA.focusNode.parentNode.replaceChild(elementB, elementA.focusNode);
+    }
+
     // support custom class
     if ($target && $target.length) {
       const className = $target[0].className || '';
@@ -682,6 +691,10 @@ export default class Editor {
 
   formatPara() {
     this.formatBlock('P');
+  }
+
+  formatCode() {
+    this.formatBlock('CODE');
   }
 
   fontStyling(target, value) {
