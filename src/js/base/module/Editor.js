@@ -671,9 +671,9 @@ export default class Editor {
     // execCommand not support <code>
     if (tagName === 'CODE') {
       var elementA = window.getSelection();
-      var elementB = document.createElement(tagName);
+      var elementB;
 
-      if (elementA.focusNode.parentElement.className !== 'note-editing-area' && elementA.focusNode.nodeName !== 'DIV' && elementA.nodeName !== 'CODE') {
+      if (elementA.focusNode.parentElement.className !== 'note-editing-area' && elementA.nodeName !== 'CODE') {
         while (elementA.focusNode.nodeName !== 'DIV') {
           elementA = window.getSelection();
           elementB = document.createElement(tagName);
