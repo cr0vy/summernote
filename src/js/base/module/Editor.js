@@ -673,8 +673,14 @@ export default class Editor {
       var elementA = window.getSelection();
       var elementB = document.createElement(tagName);
 
-      elementB.insertAdjacentHTML('beforeend', elementA.focusNode.textContent);
-      elementA.focusNode.parentNode.replaceChild(elementB, elementA.focusNode);
+      if (elementA.focusNode.parentElement.className !== 'note-editing-area' && elementA.focusNode.nodeName !== 'DIV' && elementA.nodeName !== 'CODE') {
+        while (elementA.focusNode.nodeName !== 'DIV') {
+          elementA = window.getSelection();
+          elementB = document.createElement(tagName);
+          elementB.insertAdjacentHTML('beforeend', elementA.focusNode.textContent);
+          elementA.focusNode.parentNode.replaceChild(elementB, elementA.focusNode);
+        }
+      }
     }
 
     // support custom class
