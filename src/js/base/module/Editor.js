@@ -732,6 +732,10 @@ export default class Editor {
     this.formatBlock('P');
   }
 
+  formatPre() {
+    this.formatBlock('PRE');
+  }
+
   fontStyling(target, value) {
     const rng = this.getLastRange();
 
