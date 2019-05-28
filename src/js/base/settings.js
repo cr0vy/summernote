@@ -279,6 +279,7 @@ $.summernote = $.extend($.summernote, {
         'CMD+NUM4': 'formatH4',
         'CMD+NUM5': 'formatH5',
         'CMD+NUM6': 'formatH6',
+        'CMD+NUM7': 'formatPre',
         'CMD+ENTER': 'insertHorizontalRule',
         'CMD+K': 'linkDialog.show',
       },
